@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Hunt for Saivya 💖</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe4e1;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff1493;
+        }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🗝️ Treasure Hunt for Saivya 💕</h2>
+        <p id="question">Would you like to participate in a treasure hunt?</p>
+        <button onclick="startGame()">Yes</button>
+        <p id="message" class="hidden"></p>
+        <div id="riddleContainer" class="hidden">
+            <p id="riddle"></p>
+            <input type="text" id="answer" placeholder="Your answer...">
+            <button onclick="checkAnswer()">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        let riddles = [
+            { question: "I am small but mighty, buzzing in your ear and feasting on your blood. What am I?", answer: "mosquito", display: "mausquito" },
+            { question: "I am the exchange of goods and services, the backbone of trade and economy. What am I?", answer: "commerce", display: "kaamarse" },
+            { question: "I am the first meal of the day, often enjoyed with coffee or tea. What am I?", answer: "breakfast", display: "breakfirst" }
+        ];
+        let currentRiddle = 0;
+
+        function startGame() {
+            document.getElementById("question").innerText = "Lovely! Let's get started!";
+            document.getElementById("riddleContainer").classList.remove("hidden");
+            showRiddle();
+        }
+
+        function showRiddle() {
+            if (currentRiddle < riddles.length) {
+                document.getElementById("riddle").innerText = riddles[currentRiddle].question;
+                document.getElementById("answer").value = "";
+            } else {
+                document.getElementById("riddleContainer").innerHTML = "<p>Well done Saivya! 🎉 You have solved all the riddles!" +
+                    "<br>Would you like to see the final message? 💌</p>" +
+                    "<button onclick='showMessage()'>Yes</button>";
+            }
+        }
+
+        function checkAnswer() {
+            let userAnswer = document.getElementById("answer").value.trim().toLowerCase();
+            if (userAnswer === riddles[currentRiddle].answer) {
+                alert("You were correct! The answer is " + riddles[currentRiddle].display + ".");
+                currentRiddle++;
+                showRiddle();
+            } else {
+                alert("Incorrect! Try again.");
+            }
+        }
+
+        function showMessage() {
+            document.querySelector(".container").innerHTML = `<h2>💌 A Special Message for You 💌</h2>
+                <p>Happy Valentine's Day baby! The purpose of this message is not to tell you how much I love you or how you make me feel but just to talk. I wrote many great things for this message initially but then I deleted it (You wouldn't be able to understand the words I would've used). So I decided to just raw dog this one. I will yap and you will listen.</p>
+                <p>You are great at something because you are obsessed with it. You are passionate about it. This obsession is a prerequisite. I love Saivya because I am obssessed with her. Remove Saivya from the equation and I'd just be plain french fries. She's the salt, mayonaisse, peri peri that gives flavour to my life.</p>
+                <p>A foreign key is something that gives a dependent entity its identity. I am a dependent entity and you are my foreign key. Without Saivya, there's no Vivan.</p>
+                <p>Roll number 24 is Nidhi, 25 is Padmanabh, and 26 is Saivya's Vivan. </p>
+                <p>Call me multiple inheritance because I cannot exist without an interface like you. </p>
+                <p>There are 5 dimensions in the wormhole - height, width, breadth, time and Saivya. </p>
+                <p>I sometimes wonder what my life would be like without you. And then I go to sleep because it is too tough. When you're happy, I'm happy and when you're sad, I'm sad. Maybe that's love, maybe it's not, but it's 100% nothing compared to how much I love your mom. </p>
+                <p>I promise this was all me. No chatgpt. I thought I was not creative and I was right. But this was hella fun. <p>
+                <p> I love you my princess. You're everything I need. </p>
+                <p>I am not Vivan. I am</p>
+                <p><strong>Saivya's</strong></p>
+                <p>Vivan</p>`;
+        }
+    </script>
+</body>
+</html>
